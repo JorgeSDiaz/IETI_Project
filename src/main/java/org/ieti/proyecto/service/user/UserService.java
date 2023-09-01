@@ -10,6 +10,6 @@ public interface UserService {
     public User save(User newUser);
     Optional<User> findById(String id);
     List<User> all();
-    void deleteById(String id, User userDelete);
+    void deleteById(String id);
     User update(UserDTO userUpdates, String userId);
 }

@@ -9,13 +9,17 @@ public class User {
     private final Date createdAt;
     private String name, lastname,email, passwordHash;
 
-    public User(String id, Date createdAt, String name, String lastname, String email, String password) {
+    public User(String id, String name, String lastname, String email, String password) {
         this.passwordHash = new BCryptPasswordEncoder().encode(password);
         this.createdAt = new Date();
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.email = email;
+    }
+
+    public User(UserDTO userDto) {
+        this(null, userDto.getName(), userDto.getLastname(), userDto.getEmail(), userDto.getPassword());
     }
 
     public String getId() {

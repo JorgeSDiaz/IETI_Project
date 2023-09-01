@@ -36,8 +36,8 @@ public class UserServiceHashMap implements UserService {
     }
 
     @Override
-    public void deleteById(String id, User userDelete) {
-        userMap.remove(id, userDelete);
+    public void deleteById(String id) {
+        userMap.remove(id);
     }
 
     @Override
