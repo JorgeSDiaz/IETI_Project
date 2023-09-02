@@ -1,5 +1,6 @@
 package org.ieti.proyecto.service.user;
 
+import org.ieti.proyecto.exception.UserNotFoundException;
 import org.ieti.proyecto.models.users.User;
 import org.ieti.proyecto.models.users.UserDTO;
 import org.springframework.stereotype.Service;
