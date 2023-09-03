@@ -18,8 +18,8 @@ public class User {
         this.email = email;
     }
 
-    public User(UserDTO userDto) {
-        this(null, userDto.getName(), userDto.getLastname(), userDto.getEmail(), userDto.getPassword());
+    public User(String id, UserDTO userDto) {
+        this(id, userDto.getName(), userDto.getLastname(), userDto.getEmail(), userDto.getPassword());
     }
 
     public String getId() {

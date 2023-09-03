@@ -5,10 +5,8 @@ import org.ieti.proyecto.models.users.User;
 import org.ieti.proyecto.models.users.UserDTO;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceHashMap implements UserService {
@@ -17,9 +15,12 @@ public class UserServiceHashMap implements UserService {
     private UserServiceHashMap() {
         this.userMap = new HashMap<>();
     }
+
     @Override
-    public User save(User newUser) {
-        return this.userMap.put(String.valueOf(this.userMap.size() + 1), newUser);
+    public User save(UserDTO newUser) {
+        this.userMap.put(String.valueOf(this.userMap.size() + 1),
+                new User(String.valueOf(this.userMap.size() + 1), newUser));
+        return this.getUser(String.valueOf(this.userMap.size()));
     }
 
     @Override
@@ -33,7 +34,7 @@ public class UserServiceHashMap implements UserService {
 
     @Override
     public List<User> all() {
-        return (List<User>) userMap.values();
+        return new ArrayList<>(userMap.values());
     }
 
     @Override
