@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Service
 public class UserServiceHashMap implements UserService {
     private final Map<String, User> userMap;
 
