@@ -1,13 +1,20 @@
 package org.ieti.proyecto.models.users;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Date;
 
+@Document
 public class User {
-    private final String id;
-    private final Date createdAt;
+    @Id
+    private String id;
+    private Date createdAt;
     private String name, lastname,email, passwordHash;
+
+    public User() {
+    }
 
     public User(String id, String name, String lastname, String email, String password) {
         this.passwordHash = new BCryptPasswordEncoder().encode(password);
@@ -20,6 +27,10 @@ public class User {
 
     public User(String id, UserDTO userDto) {
         this(id, userDto.getName(), userDto.getLastname(), userDto.getEmail(), userDto.getPassword());
+    }
+
+    public User(UserDTO userDTO) {
+        this(null, userDTO.getName(), userDTO.getLastname(), userDTO.getEmail(), userDTO.getPassword());
     }
 
     public String getId() {
@@ -46,26 +57,35 @@ public class User {
         return passwordHash;
     }
 
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    private void setLastname(String lastname) {
+    public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
-    private void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setPasswordHash(String passwordHash) {
+    private void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
     public void update(UserDTO userUpdates){
-        this.setName(userUpdates.getName());
-        this.setLastname(userUpdates.getLastname());
-        this.setEmail(userUpdates.getEmail());
+        if (!userUpdates.getName().isEmpty()) {
+            this.setName(userUpdates.getName());
+        }
+
+        if (!userUpdates.getLastname().isEmpty()) {
+            this.setLastname(userUpdates.getLastname());
+        }
+
+        if (!userUpdates.getEmail().isEmpty()) {
+            this.setEmail(userUpdates.getEmail());
+        }
+
         if (!userUpdates.getPassword().isEmpty()){
             this.setPasswordHash(new BCryptPasswordEncoder().encode(userUpdates.getPassword()));
         }

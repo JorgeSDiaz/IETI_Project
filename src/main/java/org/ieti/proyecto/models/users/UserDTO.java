@@ -3,7 +3,10 @@ package org.ieti.proyecto.models.users;
 import java.util.Date;
 
 public class UserDTO {
-    private final String name, lastname, email, password;
+    private final String name;
+    private final String lastname;
+    private final String email;
+    private final String password;
 
     public UserDTO() {
         this.name = "";
