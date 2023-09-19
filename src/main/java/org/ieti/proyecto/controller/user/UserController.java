@@ -13,10 +13,15 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/v1.0/api/users")
+@RequestMapping("/v1/api/users")
 public class UserController {
+
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController (UserService service) {
+        this.userService = service;
+    }
 
     @PostMapping
     public ResponseEntity<User> saveUser(@RequestBody UserDTO newUser) {
