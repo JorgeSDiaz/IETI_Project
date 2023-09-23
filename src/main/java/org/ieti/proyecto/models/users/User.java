@@ -34,6 +34,12 @@ public class User implements UserDetails {
         this.name = newUser.getName();
     }
 
+    public User(String userId, String name, String mail) {
+        this.name = name;
+        this.id = userId;
+        this.email = mail;
+    }
+
     public void update(UserDTO userUpdates){
         if (!userUpdates.getName().isEmpty()) {
             this.setName(userUpdates.getName());

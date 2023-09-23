@@ -6,7 +6,6 @@ import org.ieti.proyecto.controller.auth.AuthenticationRequest;
 import org.ieti.proyecto.controller.auth.AuthenticationResponse;
 import org.ieti.proyecto.controller.auth.RegisterRequest;
 import org.ieti.proyecto.models.users.Role;
-import org.ieti.proyecto.models.users.User;
 import org.ieti.proyecto.repository.UserMongoRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
